@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srishti Enterprises</title>
+
+<style>
+/* ================= GLOBAL SETTINGS ================= */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:#f8f9fa; color: #2d3748; overflow-x: hidden;}
+
+/* TOP BAR */
+.topbar{
+background:#071424;
+color:rgba(255, 255, 255, 0.9);
+padding:10px 20px;
+display:flex;
+justify-content:space-between;
+font-size:14px;
+font-weight: 500;
+letter-spacing: 0.5px;
+border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* HEADER */
+header{
+background:linear-gradient(135deg, #0b1f3a 0%, #132f4c 100%);
+padding:20px;
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+justify-content:space-between;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.logo{
+color:#ffd700;
+font-size:28px;
+font-weight:800;
+letter-spacing: 1.5px;
+text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+text-transform: uppercase;
+}
+
+.search{
+flex:1;
+max-width: 500px;
+margin:10px;
+display:flex;
+box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+border-radius: 6px;
+overflow: hidden;
+}
+
+.search input{
+flex:1;
+padding:12px 15px;
+border:none;
+outline:none;
+font-size: 14px;
+background: #ffffff;
+}
+
+.search button{
+background:#ffd700;
+color: #0b1f3a;
+font-weight: 700;
+border:none;
+padding:0 25px;
+cursor:pointer;
+transition: background 0.3s ease;
+}
+.search button:hover{background:#e6c200;}
+
+/* NAV (STICKY & MODERN) */
+nav{
+background:rgba(255, 215, 0, 0.95);
+backdrop-filter: blur(5px);
+padding:15px;
+text-align:center;
+position:sticky;
+top:0;
+z-index:999;
+box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+nav a{
+margin:0 20px;
+text-decoration:none;
+color:#0b1f3a;
+font-weight:700;
+font-size: 15px;
+letter-spacing: 1px;
+transition: all 0.3s ease;
+display: inline-block;
+position: relative;
+}
+nav a::after {
+content: '';
+position: absolute;
+width: 100%;
+transform: scaleX(0);
+height: 2px;
+bottom: -4px;
+left: 0;
+background-color: #0b1f3a;
+transform-origin: bottom right;
+transition: transform 0.25s ease-out;
+}
+nav a:hover::after {
+transform: scaleX(1);
+transform-origin: bottom left;
+}
+
+/* ================= PREMIUM HERO SLIDER ================= */
+.hero{
+position:relative;
+height:85vh;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.slider{
+position:absolute;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:0;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transform: scale(1.12);
+transition: opacity 1.5s ease-in-out, transform 5.5s ease-in-out;
+}
+
+.slide.active{
+opacity:1;
+transform: scale(1);
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background: linear-gradient(rgba(7, 20, 36, 0.5), rgba(7, 20, 36, 0.75));
+top:0;
+left:0;
+z-index:1;
+}
+
+.hero-text{
+position:relative;
+z-index:2;
+color:white;
+background:rgba(7, 20, 36, 0.65);
+backdrop-filter: blur(8px);
+padding:40px;
+border-radius:15px;
+max-width:650px;
+text-align:left;
+border: 1px solid rgba(255,255,255,0.1);
+box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+animation: fadeInUp 0.8s ease;
+}
+@keyframes fadeInUp {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-text h1{
+font-size:44px;
+font-weight: 800;
+letter-spacing: 1px;
+line-height: 1.2;
+}
+.hero-text h2{
+color:#ffd700;
+margin-top:12px;
+font-size: 24px;
+font-weight: 600;
+}
+.hero-text p{
+margin-top:12px;
+color: #e2e8f0;
+font-size: 16px;
+line-height: 1.5;
+}
+
+/* BUTTONS */
+.btn{
+background:#ffd700;
+color: #0b1f3a;
+font-weight: 700;
+border:none;
+padding:12px 28px;
+margin-top:20px;
+cursor:pointer;
+border-radius:6px;
+font-size: 15px;
+letter-spacing: 0.5px;
+text-transform: uppercase;
+box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+transition: all 0.3s ease;
+}
+.btn:hover{
+background:#ffffff;
+color: #0b1f3a;
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+}
+
+/* ================= CONTAINERS & CARDS ================= */
+.container{
+padding:60px 20px;
+max-width:1200px;
+margin:auto;
+}
+
+.title{
+text-align:center;
+margin-bottom:40px;
+color:#0b1f3a;
+font-size: 32px;
+font-weight: 800;
+position: relative;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+.title::after {
+content: '';
+display: block;
+width: 60px;
+height: 4px;
+background: #ffd700;
+margin: 10px auto 0 auto;
+border-radius: 2px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:15px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.04);
+border: 1px solid #edf2f7;
+transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+overflow: hidden;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 30px rgba(0,0,0,0.1);
+border-color: #ffd700;
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:8px;
+transition: transform 0.5s ease;
+cursor: zoom-in; /* Added pointer cursor */
+}
+.card:hover img {
+transform: scale(1.03);
+}
+
+.card h3{
+margin-top: 15px;
+font-size: 17px;
+color: #0b1f3a;
+font-weight: 700;
+line-height: 1.4;
+}
+
+/* WHY CHOOSE US (FEATURES) */
+.features{
+display:flex;
+justify-content:space-around;
+background: linear-gradient(135deg, #0b1f3a 0%, #071424 100%);
+color:white;
+padding:30px 20px;
+flex-wrap:wrap;
+gap:15px;
+box-shadow: inset 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.features div{
+background:rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.1);
+padding:12px 24px;
+border-radius:30px;
+font-weight: 600;
+font-size: 15px;
+letter-spacing: 0.5px;
+transition: all 0.3s ease;
+}
+.features div:hover {
+background: #ffd700;
+color: #0b1f3a;
+transform: scale(1.05);
+}
+
+/* LOCATION */
+.location{
+padding:60px 20px;
+text-align:center;
+background:white;
+border-top: 1px solid #edf2f7;
+}
+
+.location p {
+margin: 10px 0 20px 0;
+font-size: 16px;
+color: #4a5568;
+font-weight: 500;
+}
+
+.location iframe{
+width:100%;
+max-width: 900px;
+height:350px;
+border:none;
+border-radius: 12px;
+box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.location .btn {
+margin: 10px;
+}
+
+/* FINAL CTA */
+.cta{
+background: linear-gradient(135deg, #ffd700 0%, #e6c200 100%);
+padding:50px 20px;
+text-align:center;
+box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+}
+.cta h2 { font-size: 30px; color: #0b1f3a; font-weight: 800; }
+.cta p { margin-top: 8px; font-size: 16px; color: #2d3748; font-weight: 500; }
+.cta .btn { background: #0b1f3a; color: white; box-shadow: 0 4px 15px rgba(11,31,58,0.2); }
+.cta .btn:hover { background: white; color: #0b1f3a; }
+
+/* FOOTER */
+footer{
+background:#071424;
+color:rgba(255,255,255,0.7);
+padding:40px 20px;
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+gap:20px;
+border-top: 1px solid rgba(255,255,255,0.05);
+text-align: center;
+}
+footer div { font-size: 15px; font-weight: 500; }
+
+/* ================= FLOATING BUTTONS SETTINGS ================= */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+padding:15px;
+border-radius:50%;
+color:white;
+text-decoration:none;
+font-size: 22px;
+box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+z-index: 1000;
+transition: transform 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 55px; height: 55px;
+}
+
+.call{
+position:fixed;
+bottom:85px;
+right:20px;
+background:#0ea5e9;
+padding:15px;
+border-radius:50%;
+color:white;
+text-decoration:none;
+font-size: 20px;
+box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+z-index: 1000;
+transition: transform 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 55px; height: 55px;
+}
+
+.email-float{
+position:fixed;
+bottom:150px; 
+right:20px;
+background:#ea4335; 
+padding:15px;
+border-radius:50%;
+color:white;
+text-decoration:none;
+font-size: 20px;
+box-shadow: 0 4px 12px rgba(234, 67, 53, 0.4);
+z-index: 1000;
+transition: transform 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 55px; height: 55px;
+}
+
+.whatsapp:hover, .call:hover, .email-float:hover { transform: scale(1.1); }
+
+/* ================= ADDED PANELS AND MODALS (HIDDEN BY DEFAULT) ================= */
+.right-panel-modal {
+    display: none; position: fixed; z-index: 2000; right: 20px; bottom: 20px; 
+    width: 350px; background: white; border-radius: 12px; 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2); border: 1px solid #edf2f7; 
+    overflow: hidden; animation: slideUp 0.3s ease-out;
+}
+@keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.panel-header { background: #128C7E; color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+.panel-close { cursor: pointer; font-size: 22px; font-weight: bold; }
+.panel-body { padding: 20px; background: #efeae2; }
+.panel-form { display: flex; flex-direction: column; gap: 10px; background: white; padding: 15px; border-radius: 8px; }
+.panel-form input, .panel-form textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; outline: none; }
+.panel-form input:focus, .panel-form textarea:focus { border-color: #25D366; }
+.panel-submit-btn { background: #25D366; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+
+.fullscreen-img-modal {
+    display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; 
+    background-color: rgba(0, 0, 0, 0.85); justify-content: center; align-items: center;
+}
+.fullscreen-img-content { max-width: 90%; max-height: 90vh; border-radius: 8px; }
+.fullscreen-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; }
+
+/* RESPONSIVE DESIGN */
+@media(max-width:768px){
+.hero{height:70vh;}
+.hero-text h1 { font-size: 32px; }
+.features{flex-direction:column; align-items: center;}
+.features div { width: 80%; text-align: center; }
+nav a { margin: 0 10px; font-size: 14px; }
+.right-panel-modal { width: 90%; right: 5%; left: 5%; bottom: 10px; }
+}
+</style>
+<meta name="geo.region" content="IN-DL">
+<meta name="geo.placename" content="Delhi">
+<meta name="geo.position" content="28.6139;77.2090">
+<meta name="contact" content="+91 7409105361">
+</head>
+
+<body>
+
+<!-- Full Screen Image Modal -->
+<div id="imageViewerModal" class="fullscreen-img-modal" onclick="closeImageModal()">
+    <span class="fullscreen-close">×</span>
+    <img class="fullscreen-img-content" id="fullScreenImage" onclick="event.stopPropagation()">
+</div>
+
+<div class="topbar">
+<div>📍 Durga Park, New Delhi</div>
+<div>📞 +91 7409105361</div>
+</div>
+
+<header>
+<div class="logo">SRISHTI ENTERPRISES</div>
+<div class="search">
+<input type="text" placeholder="Search products...">
+<button>Search</button>
+</div>
+</header>
+
+<nav>
+<a href="">HOME</a> 
+<a href="products.html">PRODUCTS</a>
+<a href="#">OUR WORK</a>
+<a href="#">CONTACT</a>
+</nav>
+
+<div class="hero">
+<div class="slider">
+  <img src="aman 2 - Copy.png" class="slide active">
+  <img src="guru.png" class="slide">
+  <img src="Untitled-1.png" class="slide">
+  <img src="image copy 2.png" class="slide">
+  <img src="Untitled-3.png" class="slide">
+  <img src="parde.png" class="slide">
+</div>
+
+<div class="hero-text">
+<h1>SRISHTI ENTERPRISES</h1>
+<h2>Manufacturers & Exporters of Premium Gurudwara Accessories and Hotel Linen</h2>
+
+<!-- 5 Points Added Here -->
+<ul style="list-style: none; padding: 0; margin: 15px 0 25px 0; color: #e2e8f0; font-size: 16px; line-height: 1.8; font-weight: 500;">
+    <li>✔ Direct Manufacturers & Global Exporters</li>
+    <li>✔ Custom Sizes Available as Per Requirement</li>
+    <li>✔ Gurudwara Decor & Curtains</li>
+    <li>✔⁠ Worldwide Shipping</li>
+    <li>✔ Hospitality Linen Collection</li>
+</ul>
+
+<!-- Changed to open the Chat Panel -->
+<button class="btn" onclick="openContactPanel('General Order Inquiry', 'Sat Sri Akal! Please share your requirements below.')">Order on WhatsApp</button>
+</div>
+</div>
+
+<div class="container">
+<h2 class="title">Darbar Collection</h2>
+<div class="grid">
+<!-- Added openImageModal to images -->
+<div class="card"><img src="image copy 9.png" onclick="openImageModal(this.src)"><h3>Rumala Sahib</h3></div>
+<div class="card"><img src="image copy 10.png" onclick="openImageModal(this.src)"><h3>Chandoa Sahib</h3></div>
+<div class="card"><img src="guru.png" onclick="openImageModal(this.src)"><h3>Decorative Gurudwara Fabrics & Embroidery</h3></div>
+<div class="card"><img src="parde.png" onclick="openImageModal(this.src)"><h3>Custom Gurudwara Curtains</h3></div>
+</div
+</div>
+
+<div class="container">
+<h2 class="title">Luxury Hotel Linen</h2>
+<div class="grid">
+<!-- Added openImageModal to images -->
+<div class="card"><img src="bed-runners.png" onclick="openImageModal(this.src)"><h3>Bed Runners</h3></div>
+<div class="card"><img src="cartn.jpg" onclick="openImageModal(this.src)"><h3>Curtains</h3></div>
+<div class="card"><img src="deuvet.jpg" onclick="openImageModal(this.src)"><h3>Duvet</h3></div>
+<div class="card"><img src="cartn.jpg" onclick="openImageModal(this.src)"><h3>Chef Aprons</h3></div>
+</div>
+</div>
+<div class="features">
+<div>✔ Premium Quality</div>
+<div>✔ Wholesale Rates</div>
+<div>✔ Bulk Orders</div>
+<div>✔ Fast Delivery</div>
+</div>
+<div class="location">
+<h2>Our Location</h2>
+<p>📍 Dwarka Sec 1A, J.D. Public School, RZ 2518, St. No.1, Durga Park, New Delhi</p>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.9461142568603!2d77.0726190763134!3d28.601391775681023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1b467eec50cf%3A0xe726be64b22300b!2sJ.D.%20Public%20School!5e0!3m2!1sen!2sin!4v1716790000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<br><br>
+<a href="tel:+917409105361" class="btn">📞 Call Now</a>
+<!-- Changed to open the Chat Panel -->
+<button class="btn" onclick="openContactPanel('Location Contact', 'How can we assist you with finding our store or placing an order?')">💬 WhatsApp</button>
+</div>
+
+<div class="cta">
+<h2>Ready to Order?</h2>
+<p>Contact us now for best wholesale prices</p>
+<!-- Changed to open the Chat Panel -->
+<button class="btn" onclick="openContactPanel('Wholesale Inquiry', 'Please share your bulk order requirements.')">Order on WhatsApp</button>
+</div>
+
+<footer>
+<div>Srishti Enterprises</div>
+<div>📞 +91 7409105361</div>
+<div>Delhi, India</div>
+</footer>
+
+<!-- Right Side Chat Panel -->
+<div id="rightQuotePanel" class="right-panel-modal">
+  <div class="panel-header">
+      <h4>WhatsApp Chat</h4>
+      <span class="panel-close" onclick="setPanelDisplay('none')">×</span>
+  </div>
+  <div class="panel-body">
+      <p style="margin-bottom:15px; font-size:14px; background:#fff; padding:10px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.05);" id="panelBubbleText">
+          Sat Sri Akal! 🙏 Start your request below.
+      </p>
+      <div class="panel-form">
+          <input type="text" id="panelInputName" value="General Inquiry">
+          <input type="text" id="panelInputEmail" placeholder="Your Name / Contact Info">
+          <textarea id="panelInputMessage" rows="3" placeholder="Type your requirements..."></textarea>
+          <button class="panel-submit-btn" onclick="dispatchPanelWhatsApp()">Send on WhatsApp 💬</button>
+      </div>
+  </div>
+</div>
+
+<a href="mailto:srishtilinen@gmail.com" class="email-float" title="Email Us">✉</a>
+<a href="tel:+917409105361" class="call" title="Call Us">📞</a>
+<a href="#" class="whatsapp" onclick="quick()" title="WhatsApp Us">💬</a>
+
+<script>
+// Floating WhatsApp Button functionality
+function quick(){
+window.open("https://wa.me/917409105361");
+}
+
+// Fullscreen Image Logic
+function openImageModal(src) {
+    document.getElementById('fullScreenImage').src = src;
+    document.getElementById('imageViewerModal').style.display = 'flex';
+}
+function closeImageModal() {
+    document.getElementById('imageViewerModal').style.display = 'none';
+}
+
+// Right Panel WhatsApp Logic
+function openContactPanel(title, instruction) {
+    document.getElementById('rightQuotePanel').style.display = 'block';
+    document.getElementById('panelInputName').value = title;
+    document.getElementById('panelBubbleText').innerText = instruction;
+}
+function setPanelDisplay(state) {
+    document.getElementById('rightQuotePanel').style.display = state;
+}
+function dispatchPanelWhatsApp() {
+    let name = document.getElementById('panelInputName').value;
+    let contactInfo = document.getElementById('panelInputEmail').value;
+    let msg = document.getElementById('panelInputMessage').value;
+    let text = encodeURIComponent("Hello Srishti Enterprises, \n\n*Subject:* " + name + "\n*From:* " + contactInfo + "\n*Message:* " + msg);
+    window.open("https://wa.me/917409105361?text=" + text);
+}
+
+// SLIDER LOGIC WITH PERFECT INTERFACE SYNC (5 SECONDS)
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+function changeSlide(){
+  slides[index].classList.remove("active");
+  index = (index + 1) % slides.length;
+  slides[index].classList.add("active");
+}
+
+setInterval(changeSlide, 5000); 
+</script> 
+</body>
+</html>
