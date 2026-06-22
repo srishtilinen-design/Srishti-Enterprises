@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Srishti Enterprises</title>
+
+<style>
+/* ================= GLOBAL CONFIG & EXACT COLOR THEME ================= */
+:root {
+    --dark-navy: #091c33;      /* Image ka main background color */
+    --topbar-bg: #05101e;      /* Sabse upar ka dark bar */
+    --premium-gold: #ffd700;   /* Srishti Enterprises text color */
+    --bright-yellow: #ffcc00;  /* Search button aur bottom Nav bar background */
+    --nav-text: #05101e;       /* Nav buttons text color */
+    --light-bg: #f5f5f5;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--light-bg);
+    color: #2d3748;
+}
+
+/* ================= EXACT HEADER DESIGN FROM IMAGE ================= */
+
+/* 1. TOP BAR */
+.top-bar {
+    background: var(--topbar-bg);
+    color: #ffffff;
+    padding: 8px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: clamp(12px, 1.5vw, 14px);
+    font-weight: bold;
+}
+.top-bar-left, .top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 2. MAIN HEADER */
+.main-header {
+    background: var(--dark-navy);
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-logo {
+    color: var(--bright-yellow);
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* 3. SEARCH BAR */
+.search-container {
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    background: #ffffff;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    padding: 12px 15px;
+    font-size: 16px;
+    outline: none;
+    color: #4a5568;
+}
+
+.search-btn {
+    background: var(--bright-yellow);
+    border: none;
+    color: var(--nav-text);
+    padding: 0 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.search-btn:hover {
+    background: #e6b800;
+}
+
+/* 4. YELLOW NAVIGATION BAR */
+.nav-bar {
+    background: var(--bright-yellow);
+    display: flex;
+    justify-content: center;
+    gap: clamp(10px, 3vw, 40px);
+    padding: 12px 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.nav-bar a {
+    text-decoration: none;
+    color: var(--nav-text);
+    font-weight: 900;
+    font-size: clamp(13px, 2vw, 16px);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 8px;
+    transition: opacity 0.2s;
+}
+
+.nav-bar a:hover, .nav-bar a.active {
+    opacity: 0.7;
+}
+
+/* ================= CONTACT CONTENT LAYOUT ================= */
+.main-content {
+    padding: clamp(20px, 5vw, 50px) 15px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+h1.section-title {
+    text-align: center;
+    margin-bottom: clamp(25px, 5vw, 45px);
+    color: var(--dark-navy);
+    font-size: clamp(24px, 4vw, 34px);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Contact Cards Info */
+.contact-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.icon-box {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.contact-card h3 {
+    color: var(--dark-navy);
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.contact-card p {
+    font-size: 16px;
+    color: #4a5568;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+/* Action Buttons */
+.action-btn {
+    width: 100%;
+    max-width: 240px;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    transition: transform 0.2s, background 0.2s;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-phone {
+    background: var(--dark-navy);
+    color: #ffffff;
+}
+.btn-phone:hover {
+    background: var(--topbar-bg);
+    transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+    background: #25D366;
+    color: #ffffff;
+}
+.btn-whatsapp:hover {
+    background: #20ba59;
+    transform: translateY(-2px);
+}
+
+.btn-location {
+    background: var(--bright-yellow);
+    color: var(--nav-text);
+}
+.btn-location:hover {
+    background: #e6b800;
+    transform: translateY(-2px);
+}
+
+/* Mobile responsive adjustments */
+@media(max-width:768px){
+.topbar { padding: 8px 12px; font-size: 11px; } /* Mobile side-by-side fix */
+header { padding: 15px 10px; justify-content: center; gap: 10px; }
+.logo { font-size: 22px; text-align: center; width: 100%; }
+.search { max-width: 100%; width: 100%; margin: 5px 0; }
+.search input { padding: 10px; font-size: 13px; }
+.search button { padding: 0 15px; font-size: 13px; }
+nav { padding: 10px 5px; overflow-x: auto; white-space: nowrap; display: flex; justify-content: flex-start; -webkit-overflow-scrolling: touch; }
+nav a { margin: 0 12px; font-size: 13px; inline-size: max-content; }
+.category-menu { gap: 8px; padding: 15px 10px 5px 10px; }
+.category-btn { padding: 8px 16px; font-size: 13px; width: 47%; flex-grow: 1; text-align: center; }
+.category-btn.btn-all { width: 100%; }
+.gallery-container { padding: 15px 10px; }
+.image-grid { grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 12px; }
+.img-frame { padding: 8px; border-radius: 8px; }
+.img-frame img { height: 160px; border-radius: 6px; }
+.img-caption { font-size: 13px; margin-top: 8px; }
+.fullscreen-close { top: 10px; right: 20px; font-size: 35px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    <div class="top-bar-left">📍 Dwarka sec-1A</div>
+    <div class="top-bar-right">📞 +91 9310444848</div>
+</div>
+
+<!-- MAIN HEADER BRAND & SEARCH -->
+<div class="main-header">
+    <div class="brand-logo">Srishti Enterprises</div>
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search products...">
+        <button class="search-btn">Search</button>
+    </div>
+</div>
+
+<!-- YELLOW NAVIGATION BAR -->
+<div class="nav-bar">
+  <a href="idex.html">HOME</a>
+<a href="Products.html">PRODUCTS</a>
+<!-- Ab yeh button direct aapki gallery kholega -->
+<a href="our work.html#OUR">OUR WORK</a>
+<a href="contcat.html">CONTACT</a>
+</div>
+
+<!-- MAIN CONTACT CONTENT -->
+<div class="main-content">
+    <h1 class="section-title">Get In Touch With Us</h1>
+
+    <div class="contact-container">
+        
+        <!-- PHONE & CALL CARD -->
+        <div class="contact-card">
+            <div class="icon-box">📞</div>
+            <h3>Call Us</h3>
+            <p>Direct contact regarding orders & questions.</p>
+            <a href="tel:+919310444848" class="action-btn btn-phone">Call +91 9310444848</a>
+        </div>
+
+        <!-- WHATSAPP CHAT CARD -->
+        <div class="contact-card">
+            <div class="icon-box">💬</div>
+            <h3>WhatsApp Support</h3>
+            <p>Send design photos and chat live instantly.</p>
+            <a href="https://wa.me/919310444848?text=Hello%20Srishti%20Enterprises,%20I%20want%20to%20enquire%20about%20your%20frames." target="_blank" class="action-btn btn-whatsapp">Chat On WhatsApp</a>
+        </div>
+
+        <!-- LOCATION CARD -->
+        <div class="contact-card">
+            <div class="icon-box">📍</div>
+            <h3>Our Location</h3>
+            <p>Dwarka Sec-1A, New Delhi, India</p>
+            <!-- Google Maps dynamic directions redirection link -->
+            <a href="https://maps.google.com/?q=Dwarka+Sec-1A,+New+Delhi" target="_blank" class="action-btn btn-location">Open In Google Maps</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
