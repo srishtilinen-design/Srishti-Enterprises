@@ -640,8 +640,12 @@ function dispatchPanelWhatsApp() {
     let name = document.getElementById('panelInputName').value;
     let contactInfo = document.getElementById('panelInputEmail').value;
     let msg = document.getElementById('panelInputMessage').value;
+    
+    // टेक्स्ट को अच्छी तरह फॉर्मेट किया और encodeURIComponent का इस्तेमाल किया
     let text = encodeURIComponent("Hello Srishti Enterprises, \n\n*Subject:* " + name + "\n*From:* " + contactInfo + "\n*Message:* " + msg);
-    window.open("https://wa.me/91 9310444848?text=" + text);
+    
+    // फ़ोन नंबर से स्पेस हटा दिया गया है
+    window.open("https://wa.me/919310444848?text=" + text, "_blank");
 }
 
 // SLIDER LOGIC WITH PERFECT INTERFACE SYNC (5 SECONDS)
