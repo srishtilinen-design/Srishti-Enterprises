@@ -468,13 +468,57 @@ width: 55px; height: 55px;
 .fullscreen-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; }
 
 /* RESPONSIVE DESIGN */
-@media(max-width:768px){
-.hero{height:70vh;}
-.hero-text h1 { font-size: 32px; }
-.features{flex-direction:column; align-items: center;}
-.features div { width: 80%; text-align: center; }
-nav a { margin: 0 10px; font-size: 14px; }
-.right-panel-modal { width: 90%; right: 5%; left: 5%; bottom: 10px; }
+@media (max-width: 768px) {
+    /* Hero Section Fix */
+    .hero {
+        /* height: 70vh; ki jagah min-height use karein taaki text overflow na ho */
+        min-height: 70vh; 
+        height: auto;
+        padding: 40px 15px; /* Text ko upar-niche se comfortable jagah dene ke liye */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    /* Hero Text Overlap Fix */
+    .hero-text h1 { 
+        font-size: 32px; 
+        line-height: 1.3; /* Isse text ki lines aapas mein nahi ghasengi */
+        margin-bottom: 15px;
+    }
+    
+    .hero-text p {
+        line-height: 1.5; /* Paragraph text ke liye safe spacing */
+    }
+    
+    /* Features Elements Alignment */
+    .features {
+        flex-direction: column; 
+        align-items: center;
+        gap: 12px;
+    }
+    .features div { 
+        width: 100%; 
+        max-width: 400px;
+        text-align: center; 
+        line-height: 1.4; /* Elements ke andar ka text safe rahega */
+    }
+    
+    /* Navigation Link Spacing */
+    nav a { 
+        margin: 5px 10px; 
+        font-size: 14px; 
+        display: inline-block; /* Mobile par flexible grid/wrap ke liye */
+    }
+    
+    /* Right Panel / Contact Sheet Responsive Setup */
+    .right-panel-modal { 
+        width: 90%; 
+        right: 5%; 
+        left: 5%; 
+        bottom: 10px; 
+        border-radius: 12px;
+    }
 }
 </style>
 <meta name="geo.region" content="IN-DL">
@@ -491,7 +535,7 @@ nav a { margin: 0 10px; font-size: 14px; }
     <img class="fullscreen-img-content" id="fullScreenImage" onclick="event.stopPropagation()">
 </div>
 
-<<div class="topbar">
+<div class="topbar">
 <div>📍 Dwarka sec-1A</div>
 <div>📞 +91 9310444848</div>
 </div>
@@ -550,8 +594,8 @@ nav a { margin: 0 10px; font-size: 14px; }
 <div class="card"><img src="image copy 10.png" onclick="openImageModal(this.src)"><h3>Chandoa Sahib</h3></div>
 <div class="card"><img src="guru.png" onclick="openImageModal(this.src)"><h3>Decorative Gurudwara Fabrics & Embroidery</h3></div>
 <div class="card"><img src="parde.png" onclick="openImageModal(this.src)"><h3>Custom Gurudwara Curtains</h3></div>
-</div
-</div>>
+</div>
+</div>
 
 <div class="container">
 <h2 class="title">Luxury Hotel Linen</h2>
@@ -563,33 +607,231 @@ nav a { margin: 0 10px; font-size: 14px; }
 <div class="card"><img src="cartn.jpg" onclick="openImageModal(this.src)"><h3>Chef Aprons</h3></div>
 </div>
 </div>
+<<!-- ================= FEATURES SECTION ================= -->
 <div class="features">
-<div>✔ Premium Quality</div>
-<div>✔ Bulk Orders</div>
-<div>✔ Fast Delivery</div>
+    <div>✔ Premium Quality</div>
+    <div>✔ Bulk Orders</div>
+    <div>✔ Fast Delivery</div>
 </div>
+
+<!-- ================= LOCATION SECTION ================= -->
 <div class="location">
-<h2>Our Location</h2>
-<p>📍 Dwarka Sec 1A,New Delhi</p>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.9461142568603!2d77.0726190763134!3d28.601391775681023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1b467eec50cf%3A0xe726be64b22300b!2sJ.D.%20Public%20School!5e0!3m2!1sen!2sin!4v1716790000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-<br><br>
-<a href="tel:+91 9310444848" class="btn">📞 Call Now</a>
-<!-- Changed to open the Chat Panel -->
-<button class="btn" onclick="openContactPanel('Location Contact', 'How can we assist you with finding our store or placing an order?')">💬 WhatsApp</button>
+    <h2>Our Location</h2>
+    <p>📍 Dwarka Sec 1A, New Delhi</p>
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.9461142568603!2d77.0726190763134!3d28.601391775681023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1b467eec50cf%3A0xe726be64b22300b!2sJ.D.%20Public%20School!5e0!3m2!1sen!2sin!4v1716790000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="btn-group">
+        <a href="tel:+919310444848" class="btn btn-call">📞 Call Now</a>
+        <!-- Fixed Mobile WhatsApp Button 1 -->
+        <button class="btn btn-whatsapp" onclick="openWhatsAppInquiry('Location Contact', 'Hi Srishti Enterprises, I want help regarding your store location/placing an order.')">💬 WhatsApp</button>
+    </div>
 </div>
 
+<!-- ================= CTA SECTION ================= -->
 <div class="cta">
-<h2>Ready to Order?</h2>
-<p>Contact us now for best wholesale prices</p>
-<!-- Changed to open the Chat Panel -->
-<button class="btn" onclick="openContactPanel('Wholesale Inquiry', 'Please share your bulk order requirements.')">Order on WhatsApp</button>
+    <h2>Ready to Order?</h2>
+    <p>Contact us now for best wholesale prices</p>
+    <!-- Fixed Mobile WhatsApp Button 2 -->
+    <button class="btn btn-whatsapp cta-block-btn" onclick="openWhatsAppInquiry('Wholesale Inquiry', 'Please share your bulk order requirements.')">Order on WhatsApp 💬</button>
 </div>
 
+<!-- ================= PREMIUM FOOTER ================= -->
 <footer>
-<div>Srishti Enterprises</div>
-<div>📞 +91 9310444848</div>
-<div>Delhi, India</div>
+    <div class="footer-title">Srishti Enterprises</div>
+    <div>📞 +91 9310444848</div>
+    <div>📍 Dwarka Sec 1A, New Delhi, India</div>
 </footer>
+
+<!-- ================= STYLING (TOUCH & MOBILE OPTIMIZED) ================= -->
+<style>
+/* Features Style */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 30px auto;
+    max-width: 800px;
+    padding: 0 15px;
+}
+.features div {
+    background: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #091c33;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    font-size: 15px;
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+}
+
+/* Location Box Style */
+.location {
+    background: #ffffff;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    border: 1px solid #e2e8f0;
+}
+.location h2 {
+    color: #091c33;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+.location p {
+    color: #4a5568;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.map-container {
+    width: 100%;
+    height: 320px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid #cbd5e1;
+}
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* CTA Section Style */
+.cta {
+    background: #ffffff;
+    text-align: center;
+    padding: 50px 20px;
+    border-top: 1px solid #e2e8f0;
+}
+.cta h2 {
+    color: #091c33;
+    font-size: 26px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.cta p {
+    color: #4a5568;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* ================= MODERN BUTTONS MECHANISM ================= */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+.btn {
+    padding: 15px 32px; /* Perfect sizing for thumbs on touch-screens */
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: transform 0.2s, opacity 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent; /* Removes mobile blue flash blink */
+}
+.btn:active {
+    transform: scale(0.98); /* Instant click feedback response for mobiles */
+}
+.btn-call {
+    background: #091c33;
+    color: white;
+    flex: 1;
+}
+.btn-whatsapp {
+    background: #25D366;
+    color: white;
+    box-shadow: 0 4px 14px rgba(37,211,102,0.3);
+    flex: 1;
+}
+.cta-block-btn {
+    width: 100%;
+    max-width: 340px;
+}
+
+/* Footer Style */
+footer {
+    background: #05101e;
+    color: #ffffff;
+    padding: 35px 20px;
+    text-align: center;
+    border-top: 3px solid #ffcc00;
+    font-size: 14px;
+    line-height: 1.8;
+}
+.footer-title {
+    color: #ffcc00;
+    font-weight: 800;
+    font-size: 19px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+/* ================= EXCLUSIVE MOBILE RECONSTRUCTION (CRITICAL) ================= */
+@media (max-width: 600px) {
+    .features { gap: 10px; }
+    .features div { min-width: 100%; padding: 10px; font-size: 14px; }
+    
+    .location { padding: 20px 15px; }
+    .map-container { height: 240px; }
+    
+    /* Auto layout converts to full stacking block on mobile viewports */
+    .btn-group {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .btn {
+        width: 100%;
+        flex: none;
+        padding: 14px 20px;
+    }
+    .cta-block-btn {
+        max-width: 100%;
+    }
+}
+</style>
+
+<!-- ================= JAVASCRIPT FOR SECURE MOBILE/DESKTOP API RE-ROUTING ================= -->
+<script>
+function buildWhatsAppUrl(phoneNumber, text = "") {
+    const cleanPhone = phoneNumber.replace(/\D/g, "");
+    const encodedText = text ? `?text=${encodeURIComponent(text)}` : "";
+    return `https://wa.me/${cleanPhone}${encodedText}`;
+}
+
+function openWhatsAppInquiry(subject, message) {
+    const phoneNumber = "919310444848";
+    const fullText = `Hello Srishti Enterprises,\n\n*${subject}*\n${message}`;
+    const url = buildWhatsAppUrl(phoneNumber, fullText);
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (isMobile) {
+        window.location.href = url;
+    } else {
+        window.open(url, '_blank', 'noopener,noreferrer');
+    }
+}
+</script>
 
 <!-- Right Side Chat Panel -->
 <div id="rightQuotePanel" class="right-panel-modal">
@@ -617,7 +859,8 @@ nav a { margin: 0 10px; font-size: 14px; }
 <script>
 // Floating WhatsApp Button functionality
 function quick(){
-window.open("https://wa.me/919310444848");
+    const url = buildWhatsAppUrl("919310444848");
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 // Fullscreen Image Logic
@@ -642,8 +885,9 @@ function dispatchPanelWhatsApp() {
     let name = document.getElementById('panelInputName').value;
     let contactInfo = document.getElementById('panelInputEmail').value;
     let msg = document.getElementById('panelInputMessage').value;
-    let text = encodeURIComponent("Hello Srishti Enterprises, \n\n*Subject:* " + name + "\n*From:* " + contactInfo + "\n*Message:* " + msg);
-    window.open("https://wa.me/91 9310444848?text=" + text);
+    let text = "Hello Srishti Enterprises, \n\n*Subject:* " + name + "\n*From:* " + contactInfo + "\n*Message:* " + msg;
+    const url = buildWhatsAppUrl("919310444848", text);
+    window.open(url, '_blank', 'noopener,noreferrer');
 }
 
 // SLIDER LOGIC WITH PERFECT INTERFACE SYNC (5 SECONDS)
